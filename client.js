@@ -7,12 +7,11 @@ function clientConnect() {
             console.log('client == null, создаю клиент');
             client = net.connect({port: 8080}, function() {
                 console.log('Hello, server!');
-                //client.destroy();
+                setTimeout(() => client.write("hello, server!"), 900);
             });
 
             client.on('data', function(data) {
                 console.log(data.toString());
-                //client.end();
             });
 
             client.on('end', function() { 
