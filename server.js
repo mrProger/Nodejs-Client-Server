@@ -15,8 +15,10 @@ function serverConnect() {
 
             connection.on('error', function() {
                 console.log('Возникла ошибка! Перезапускаю сервер...');
-                server.close();
-                server = null;
+                if (server != null) {
+                    server.close();
+                    server = null;
+                }
             });
         });
 
